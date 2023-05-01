@@ -113,9 +113,11 @@ const altLeft = document.querySelector('.key-alt-L');
 const altRight = document.querySelector('.key-alt-R');
 const shiftLeft = document.querySelector('.key-shift-L');
 const shiftRight = document.querySelector('.key-shift-R');
-// const printText = document.getElementById('textarea');
+const printText = document.getElementById('textarea');
 
 function pressKey(e) {
+  setFocus();
+
   for (let i = 0; i < eng.length; i += 1) {
     if (e.key.toLowerCase() === eng[i].innerText) {
       const keyParent = eng[i].parentNode;
@@ -185,11 +187,9 @@ function unpressKey(e) {
   }
   if (e.code === 'ShiftLeft') {
     shiftLeft.classList.remove('active');
-    // activeCapsLock();
   }
   if (e.code === 'ShiftRight') {
     shiftRight.classList.remove('active');
-    // activeCapsLock();
   }
   if (e.code === 'ControlLeft') {
     ctrlLeft.classList.remove('active');
@@ -203,7 +203,49 @@ function unpressKey(e) {
   if (e.code === 'AltRight') {
     altRight.classList.remove('active');
   }
+  setFocus();
 }
 
-window.addEventListener('keydown', pressKey);
-window.addEventListener('keyup', unpressKey);
+function clickKey(e) {
+  setFocus();
+
+  if (e.target.innerText === 'space') {
+    printText.innerHTML += ' ';
+  } else
+  if (e.target.innerText === 'tab') {
+    printText.innerHTML += '     ';
+  } else
+  if (e.target.innerText === 'backspace') {
+    printText.innerHTML = printText.innerHTML.slice(0, -1);
+  } else
+  if (e.target.innerText === 'enter') {
+    printText.innerHTML += '\n';
+  } else
+  if (e.target.innerText === 'capslock') {
+    printText.innerHTML += '';
+  } else
+  if (e.target.innerText === 'shift-L') {
+    printText.innerHTML += '';
+  } else
+  if (e.target.innerText === 'shift-R') {
+    printText.innerHTML += '';
+  } else
+  if (e.target.innerText === 'ctrl-L') {
+    printText.innerHTML += '';
+  } else
+  if (e.target.innerText === 'ctrl-R') {
+    printText.innerHTML += '';
+  } else
+  if (e.target.innerText === 'alt-L') {
+    printText.innerHTML += '';
+  } else
+  if (e.target.innerText === 'alt-R') {
+    printText.innerHTML += '';
+  } else {
+    printText.innerHTML += e.target.innerText;
+  }
+}
+
+keyboard.addEventListener('keydown', pressKey);
+keyboard.addEventListener('keyup', unpressKey);
+keyboard.addEventListener('click', clickKey);
