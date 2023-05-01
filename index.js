@@ -1,4 +1,6 @@
+// eslint-disable-next-line import/extensions
 import Key from './js/Key.js';
+// eslint-disable-next-line import/extensions
 import dataKeys from './js/dataKeys.js';
 
 // Create main title
@@ -50,6 +52,12 @@ const renderKeys = () => {
 
 renderKeys();
 
+const setFocus = () => {
+  document.getElementById('textarea').focus();
+};
+
+setFocus();
+
 const arrayKeys = document.querySelectorAll('.keyboard__key');
 
 const addKeysNames = () => {
@@ -59,16 +67,16 @@ const addKeysNames = () => {
     arrayKeys[i].setAttribute('class', classKey);
     template += `<span class="eng">${dataKeys[i].engName}</span>`;
     if (dataKeys[i].engName === 'backspace' || dataKeys[i].engName === 'space' || dataKeys[i].engName === 'tab'
-    || dataKeys[i].engName === 'capslock' || dataKeys[i].engName === 'enter' || dataKeys[i].engName === 'alt' || dataKeys[i].engName === 'shift'
-    || dataKeys[i].engName === 'ctrl' || dataKeys[i].engName === 'win' || dataKeys[i].engName === 'up'
+    || dataKeys[i].engName === 'capslock' || dataKeys[i].engName === 'enter' || dataKeys[i].engName === 'alt-R' || dataKeys[i].engName === 'shift'
+    || dataKeys[i].engName === 'ctrl-R' || dataKeys[i].engName === 'win' || dataKeys[i].engName === 'up' || dataKeys[i].engName === 'ctrl-L' || dataKeys[i].engName === 'alt-L'
     || dataKeys[i].engName === 'down' || dataKeys[i].engName === 'left' || dataKeys[i].engName === 'right') {
       template += `<span class="engUpperCase hidden">${dataKeys[i].engName}</span>`;
     } else {
       template += `<span class="engUpperCase hidden">${dataKeys[i].engName.toUpperCase()}</span>`;
     }
     if (dataKeys[i].engName === 'backspace' || dataKeys[i].engName === 'space' || dataKeys[i].engName === 'tab'
-    || dataKeys[i].engName === 'capslock' || dataKeys[i].engName === 'enter' || dataKeys[i].engName === 'alt' || dataKeys[i].engName === 'shift'
-    || dataKeys[i].engName === 'ctrl' || dataKeys[i].engName === 'win' || dataKeys[i].engName === 'up'
+    || dataKeys[i].engName === 'capslock' || dataKeys[i].engName === 'enter' || dataKeys[i].engName === 'alt-R' || dataKeys[i].engName === 'shift'
+    || dataKeys[i].engName === 'ctrl-R' || dataKeys[i].engName === 'win' || dataKeys[i].engName === 'up' || dataKeys[i].engName === 'ctrl-L' || dataKeys[i].engName === 'alt-L'
     || dataKeys[i].engName === 'down' || dataKeys[i].engName === 'left' || dataKeys[i].engName === 'right') {
       template += `<span class="rus hidden">${dataKeys[i].rusName}</span>`;
     } else {
@@ -94,3 +102,108 @@ const activeCapsLock = () => {
 };
 
 capsLock.addEventListener('click', activeCapsLock);
+
+const space = document.querySelector('.key-space');
+const tab = document.querySelector('.key-tab');
+const backspace = document.querySelector('.key-backspace');
+const enter = document.querySelector('.key-enter');
+const ctrlLeft = document.querySelector('.key-ctrl-L');
+const ctrlRight = document.querySelector('.key-ctrl-R');
+const altLeft = document.querySelector('.key-alt-L');
+const altRight = document.querySelector('.key-alt-R');
+const shiftLeft = document.querySelector('.key-shift-L');
+const shiftRight = document.querySelector('.key-shift-R');
+// const printText = document.getElementById('textarea');
+
+function pressKey(e) {
+  for (let i = 0; i < eng.length; i += 1) {
+    if (e.key.toLowerCase() === eng[i].innerText) {
+      const keyParent = eng[i].parentNode;
+      keyParent.classList.add('active');
+    }
+  }
+
+  if (e.code === 'Space') {
+    space.classList.add('active');
+  }
+  if (e.code === 'Tab') {
+    tab.classList.add('active');
+  }
+  if (e.code === 'Backspace') {
+    backspace.classList.add('active');
+  }
+  if (e.code === 'Enter') {
+    enter.classList.add('active');
+  }
+  if (e.code === 'CapsLock') {
+    capsLock.classList.add('active');
+    activeCapsLock();
+  }
+  if (e.code === 'ShiftLeft') {
+    shiftLeft.classList.add('active');
+    // activeCapsLock();
+  }
+  if (e.code === 'ShiftRight') {
+    shiftRight.classList.add('active');
+    // activeCapsLock();
+  }
+  if (e.code === 'ControlLeft') {
+    ctrlLeft.classList.add('active');
+  }
+  if (e.code === 'ControlRight') {
+    ctrlRight.classList.add('active');
+  }
+  if (e.code === 'AltLeft') {
+    altLeft.classList.add('active');
+  }
+  if (e.code === 'AltRight') {
+    altRight.classList.add('active');
+  }
+}
+
+function unpressKey(e) {
+  for (let i = 0; i < eng.length; i += 1) {
+    if (e.key.toLowerCase() === eng[i].innerText) {
+      const keyParent = eng[i].parentNode;
+      keyParent.classList.remove('active');
+    }
+  }
+  if (e.code === 'Space') {
+    space.classList.remove('active');
+  }
+  if (e.code === 'Tab') {
+    tab.classList.remove('active');
+  }
+  if (e.code === 'Backspace') {
+    backspace.classList.remove('active');
+  }
+  if (e.code === 'Enter') {
+    enter.classList.remove('active');
+  }
+  if (e.code === 'CapsLock') {
+    capsLock.classList.remove('active');
+  }
+  if (e.code === 'ShiftLeft') {
+    shiftLeft.classList.remove('active');
+    // activeCapsLock();
+  }
+  if (e.code === 'ShiftRight') {
+    shiftRight.classList.remove('active');
+    // activeCapsLock();
+  }
+  if (e.code === 'ControlLeft') {
+    ctrlLeft.classList.remove('active');
+  }
+  if (e.code === 'ControlRight') {
+    ctrlRight.classList.remove('active');
+  }
+  if (e.code === 'AltLeft') {
+    altLeft.classList.remove('active');
+  }
+  if (e.code === 'AltRight') {
+    altRight.classList.remove('active');
+  }
+}
+
+window.addEventListener('keydown', pressKey);
+window.addEventListener('keyup', unpressKey);

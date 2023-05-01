@@ -43,10 +43,12 @@
 
 .keyboard__key:active {
     background-color: gray;
+    transition: 0.5s;
 }
 
 .key-backspace,
-.key-shift,
+.key-shift-L,
+.key-shift-R,
 .key-capslock,
 .key-tab {
     width: 110px;
@@ -55,10 +57,13 @@
     font-weight: 600;
 }
 
-.key-alt,
+.key-alt-L,
+.key-alt-R,
 .key-win,
-.key-ctrl {
+.key-ctrl-L,
+.key-ctrl-R {
     background-color: cadetblue;
+    font-size: 0.9rem;
 }
 
 .key-up,
@@ -102,4 +107,9 @@
 
 .hidden {
     display: none;
+}
+
+.active {
+    background-color: gray;
+    transition: 0.5s;
 }
