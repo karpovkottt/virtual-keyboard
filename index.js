@@ -58,9 +58,39 @@ const addKeysNames = () => {
     const classKey = `keyboard__key key-${dataKeys[i].engName}`;
     arrayKeys[i].setAttribute('class', classKey);
     template += `<span class="eng">${dataKeys[i].engName}</span>`;
-    template += `<span class="rus hidden">${dataKeys[i].rusName}</span>`;
+    if (dataKeys[i].engName === 'backspace' || dataKeys[i].engName === 'space' || dataKeys[i].engName === 'tab'
+    || dataKeys[i].engName === 'capslock' || dataKeys[i].engName === 'enter' || dataKeys[i].engName === 'alt' || dataKeys[i].engName === 'shift'
+    || dataKeys[i].engName === 'ctrl' || dataKeys[i].engName === 'win' || dataKeys[i].engName === 'up'
+    || dataKeys[i].engName === 'down' || dataKeys[i].engName === 'left' || dataKeys[i].engName === 'right') {
+      template += `<span class="engUpperCase hidden">${dataKeys[i].engName}</span>`;
+    } else {
+      template += `<span class="engUpperCase hidden">${dataKeys[i].engName.toUpperCase()}</span>`;
+    }
+    if (dataKeys[i].engName === 'backspace' || dataKeys[i].engName === 'space' || dataKeys[i].engName === 'tab'
+    || dataKeys[i].engName === 'capslock' || dataKeys[i].engName === 'enter' || dataKeys[i].engName === 'alt' || dataKeys[i].engName === 'shift'
+    || dataKeys[i].engName === 'ctrl' || dataKeys[i].engName === 'win' || dataKeys[i].engName === 'up'
+    || dataKeys[i].engName === 'down' || dataKeys[i].engName === 'left' || dataKeys[i].engName === 'right') {
+      template += `<span class="rus hidden">${dataKeys[i].rusName}</span>`;
+    } else {
+      template += `<span class="rusUpperCase hidden">${dataKeys[i].rusName.toUpperCase()}</span>`;
+    }
     arrayKeys[i].innerHTML = template;
   }
 };
 
 addKeysNames();
+
+const capsLock = document.querySelector('.key-capslock');
+const engUpperCase = document.querySelectorAll('.engUpperCase');
+const eng = document.querySelectorAll('.eng');
+const activeCapsLock = () => {
+  capsLock.classList.toggle('capslock--pressed');
+  engUpperCase.forEach((el) => {
+    el.classList.toggle('hidden');
+  });
+  eng.forEach((el) => {
+    el.classList.toggle('hidden');
+  });
+};
+
+capsLock.addEventListener('click', activeCapsLock);
