@@ -143,11 +143,9 @@ function pressKey(e) {
   }
   if (e.code === 'ShiftLeft') {
     shiftLeft.classList.add('active');
-    // activeCapsLock();
   }
   if (e.code === 'ShiftRight') {
     shiftRight.classList.add('active');
-    // activeCapsLock();
   }
   if (e.code === 'ControlLeft') {
     ctrlLeft.classList.add('active');
