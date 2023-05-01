@@ -6,16 +6,9 @@ export default class Key {
 
   // Generate key
   generateKey() {
-    let template = '';
     const key = document.createElement('button');
     key.className = `keyboard__key key-${this.engName}`;
 
-    if (this.engName) {
-      template += `<span class='eng'>${this.engName}</span>`;
-      template += `<span class='rus'>${this.rusName}</span>`;
-    }
-
-    key.innerHTML = template;
     return key;
   }
 }
