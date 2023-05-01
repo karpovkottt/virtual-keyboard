@@ -58,7 +58,7 @@ const addKeysNames = () => {
     const classKey = `keyboard__key key-${dataKeys[i].engName}`;
     arrayKeys[i].setAttribute('class', classKey);
     template += `<span class="eng">${dataKeys[i].engName}</span>`;
-    template += `<span class="rus">${dataKeys[i].rusName}</span>`;
+    template += `<span class="rus hidden">${dataKeys[i].rusName}</span>`;
     arrayKeys[i].innerHTML = template;
   }
 };

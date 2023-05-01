@@ -59,10 +59,10 @@ const dataKeys = [
   { engName: 'space', rusName: 'space' },
   { engName: 'alt', rusName: 'alt' },
   { engName: 'ctrl', rusName: 'ctrl' },
-  { engName: 'leftArrow', rusName: 'leftArrow' },
-  { engName: 'upArrow', rusName: 'upArrow' },
-  { engName: 'downArrow', rusName: 'downArrow' },
-  { engName: 'rightArrow', rusName: 'rigthArrow' },
+  { engName: 'left', rusName: 'left' },
+  { engName: 'up', rusName: 'up' },
+  { engName: 'down', rusName: 'down' },
+  { engName: 'right', rusName: 'right' },
 ];
 
 export default dataKeys;
